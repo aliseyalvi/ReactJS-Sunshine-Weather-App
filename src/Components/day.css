@@ -1,0 +1,16 @@
+.day-container{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.day-container:hover{
+    cursor: pointer;
+}
+
+.day-container > div{
+    border: 1px solid yellow;
+}

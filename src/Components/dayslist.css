@@ -1,0 +1,44 @@
+.dayslist-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
+}
+.dayslist-container > div {
+    flex-grow: 1;
+}
+
+.list {
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.list a {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0.4em 0.4em 0.4em 2em;
+    *padding: 0.4em;
+    /*background: #5975D9;*/
+    background: #42a5f4;
+    color: white;
+    text-decoration: none;
+    /*box-shadow: inset 0.5em 0 black; */
+    -webkit-transition: box-shadow 0.5s;
+    /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 0.5s;
+}
+.list a:hover {
+    box-shadow: inset 0.5em 0 black;
+    background: #80d6ff;
+    color: #000;
+}
+.list a span{
+    font-size: 0.8em;
+}
