@@ -23,8 +23,6 @@ class Autocomplete extends Component {
       userInput: "",
       inputCity:""
     };
-    //this.fetchAPI = throttle(this.fetchAPI, 1000)
-    //this.onChangeDebounced = debounce(this.fetchAPI, 1000)
   }
   
   fetchAPI=debounce((value)=> {

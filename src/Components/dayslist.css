@@ -16,6 +16,7 @@
     padding: 0;
     margin: 0;
     width: 100%;
+    z-index: 1;
 }
 .list a {
     position: relative;
@@ -26,8 +27,8 @@
     padding: 0.4em 0.4em 0.4em 2em;
     *padding: 0.4em;
     /*background: #5975D9;*/
-    background: #42a5f4;
-    color: white;
+    /*background: #42a5f4; */
+    color: #424242;
     text-decoration: none;
     /*box-shadow: inset 0.5em 0 black; */
     -webkit-transition: box-shadow 0.5s;
@@ -36,7 +37,7 @@
 }
 .list a:hover {
     box-shadow: inset 0.5em 0 black;
-    background: #80d6ff;
+    /*background: #80d6ff; */
     color: #000;
 }
 .list a span{

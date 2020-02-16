@@ -3,7 +3,9 @@ import Autocomplete from "./Autocomplete";
 import './header.css';
 import Logo from '../imgs/sunshine_app_logo.png';
 import './autocomplete.css'
-//import {FaEllipsisV} from "react-icons/fa";
+import { Grid,AppBar,Toolbar,IconButton,Typography } from '@material-ui/core';
+
+
 class Header extends Component {
     constructor(props){
         super(props);
@@ -25,19 +27,27 @@ class Header extends Component {
         this.props.handleLatLng(data[0].lat,data[0].lng,)
       }
     render() {
+        
         return (
-            <div className="head-container">
-                <div className="logo-container">
+            <AppBar position="static" className="root">
+                <Toolbar >
+                <IconButton edge="start" className="logo-container">
                     <img src={Logo} alt="logo" className="logo-img"/>
-                    <span>Sunshine</span>
+                    
+                </IconButton>
+                <Typography variant="h6" className="logo-name">Sunshine</Typography>
+                <div className="spacer">
+
                 </div>
                 <div className="setting-container">
                 <Autocomplete
                 getLatLong={this.getLatLng}
                 />
-                    {/*<FaEllipsisV /> */}
+                    
                 </div>
-            </div>
+                </Toolbar>
+            </AppBar>
+            
         );
     }
 }

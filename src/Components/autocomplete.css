@@ -5,7 +5,7 @@ body {
   input {
     border: 0;
     padding: 0.5rem;
-    width: 300px;
+    min-width: 100px;
   }
   .search{
     border: 0;
@@ -29,11 +29,10 @@ body {
     max-height: 200px;
     overflow-y: auto;
     padding: 0;
-    width: calc(300px + 1rem);
     position: absolute;
-    z-index: 999;
-    background: #80d6ff;
-    color:white;
+    z-index: 99999;
+    background: white;
+    color: #424242;
   }
   .suggestions:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -44,7 +43,7 @@ body {
   
   .suggestion-active,
   .suggestions li:hover {
-    background: #42a5f4;
+    background: #E0E0E0;
     color: black;
     cursor: pointer;
     font-weight: 700;

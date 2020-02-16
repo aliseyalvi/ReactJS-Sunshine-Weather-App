@@ -1,13 +1,27 @@
 import React, {Component} from 'react';
 import Day from './Day'
 import './dayslist.css'
-
+import {List,ListItem,ListItemText,ListItemIcon,Divider} from '@material-ui/core';
 function Menu(props) {
 
     const list = props.daysList;
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const handleListItemClick = (event, index) => {
+        setSelectedIndex(index);
+      };
+     
+    
     const updatedList = list.map((listItems, index) => {
         return (
-            <li key={index} onClick={() => props.getDay(index)}>
+            <ListItem button key={index} 
+            /*onClick={() => props.getDay(index)} 
+            onClick={event => handleListItemClick(event, index)} */
+            selected={selectedIndex === index}
+            onClick={(e)=>{
+                handleListItemClick(e,index);
+                props.getDay(index);
+            }}
+            >
                 <a href="#">
                     <div>{props.getDayFromDate(listItems.date)}
                         <br/>
@@ -19,12 +33,12 @@ function Menu(props) {
                     </div>
                 </a>
 
-            </li>
+            </ListItem>
         );
     });
 
     return (
-        <ul className="list">{updatedList}</ul>
+        <List component="nav" aria-label="main mailbox folders" className="list">{updatedList}</List>
     );
 }
 
