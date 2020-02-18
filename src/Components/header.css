@@ -3,11 +3,13 @@
 }
 
 .spacer{
-    flex-grow: 1;
+    flex-grow: 0.2;
 }
 .logo-name{
-    font-size: 1.5em;
+    font-size: 2em;
     font-family: 'Kaushan Script', cursive;
+    margin: 0;
+    padding: 0;
 }
 .head-container{
     box-sizing: border-box;
@@ -29,6 +31,18 @@
 .logo-container span{
     font-family: 'Kaushan Script', cursive;
 }
+@media only screen and (max-width: 600px) and (min-width: 300px)  {
+    .logo-name{
+        font-size: 1.2em;
+
+    }
+  }
+  @media only screen and (max-width: 300px)  {
+    .logo-name{
+        font-size: 0em;
+
+    }
+  }
 .setting-container{
     box-sizing: border-box; 
     padding: 5px;

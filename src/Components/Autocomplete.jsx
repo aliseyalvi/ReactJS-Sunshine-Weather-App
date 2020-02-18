@@ -31,7 +31,7 @@ class Autocomplete extends Component {
     return fetch(`https://api.locationiq.com/v1/autocomplete.php?key=pk.f01a4da96401b09a4711706dc65f03a6&q=${value}`)
     .then(response =>response.json())
     .then((data)=>{
-      //console.log(data);
+      console.log(data);
       
       let suggestionsArr=[];
       
@@ -40,12 +40,14 @@ class Autocomplete extends Component {
           name:'',
           lat:'',
           lng:'',
-          city:''
+          location:'',
+          country:''
         }
         suggestionObj.name=suggestion.display_name;
         suggestionObj.lat=suggestion.lat;
         suggestionObj.lng=suggestion.lon;
-        suggestionObj.city=suggestion.display_place;
+        suggestionObj.location=suggestion.display_place;
+        suggestionObj.country=suggestion.address.country;
         suggestionsArr.push(suggestionObj)
         //console.log(suggestionObj)
         //console.log(suggestionsArr);

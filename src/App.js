@@ -3,8 +3,35 @@ import Header from './Components/Header'
 import TodayInfo from './Components/TodayInfo'
 import DaysList from './Components/DaysList'
 import './App.css'
-import { Grid,Paper,Container } from '@material-ui/core';
+import { Grid,Paper,Container,Card,CardContent} from '@material-ui/core';
+import {
+    withStyles,
+    MuiThemeProvider,
+    createMuiTheme
+} from "@material-ui/core/styles";
+const muiBaseTheme = createMuiTheme();
 
+const theme = {
+    overrides: {
+        MuiPaper: {
+        root: {
+          "&.MuiPaper--01": {
+            backgroundColor:"#eceff1",
+            
+          }
+        }
+      },
+      MuiContainer: {
+        root: {
+          "&.MuiContainer--01": {
+            margin:"0px",
+            backgroundColor:"#eceff1",
+            padding:"0px"
+          }
+        }
+      },
+    }
+  };
 const API_key = "4d0ac246f8af319d29b3a62cbb5abd00";
 const APP_id = "b5f3c514";
 
@@ -20,8 +47,10 @@ class App extends React.Component {
             weatherInfo: {},
             three_hoursList: [],
             five_DaysList: [],
-            longitude:'33.73',
-            latitude:'73.08'
+            longitude:'73.04',
+            latitude:'33.72',
+            country:'Pakistan',
+            location:'Islamabad'
 
         }
 
@@ -47,17 +76,33 @@ class App extends React.Component {
                 })
             })
     }
-    handleLatLng=(lat,lng)=>{
+    handleLatLng=(lat,lng,location,country)=>{
         
         this.setState({
             longitude : lng.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0],
-            latitude : lat.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]
+            latitude : lat.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0],
+            location:location,
+            country:country
           })
           console.log(`Lat from Child: ${lat} Lng from Child: ${lng}`)
           //fetch weather data upon search 
           this.fetchWeatherData(lat,lng)
     }
     componentDidMount() {
+        fetch(`http://ip-api.com/json/`)
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                
+                this.setState({
+                    latitude:data.lat,
+                    longitude:data.lon,
+                    country:data.country,
+                    location:data.city
+                })
+                this.fetchWeatherData(this.state.latitude,this.state.longitude)
+            })
+        /*
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position)=>{
               this.setState({
@@ -90,6 +135,7 @@ class App extends React.Component {
           });
           
         }
+        */
         
     }
     
@@ -103,9 +149,10 @@ class App extends React.Component {
         } else {
             return (
                 <div className="App">
-                    <Container maxWidth="md">
-                    <Paper elevation={3} >
-                    <Grid container maxWidth="md">
+                    <MuiThemeProvider theme={createMuiTheme(theme)}>
+                    <Container maxWidth="false" className={"MuiContainer--01 main-Container"}>
+                    <Paper elevation={0} className={"MuiPaper--01"}>
+                    <Grid container  className="main-wrap">
                     <Grid container item direction="row">
                         <Grid item style={colStyle} xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Header
@@ -113,12 +160,24 @@ class App extends React.Component {
                             />
                         </Grid>
                     </Grid>
+                    <Container container maxWidth="md" className="main-wrap">
                     <Grid container item direction="row">
+                        <Container maxWidth="false" className={"MuiContainer--01"}></Container>
                         <Grid item style={colStyle} xs={12} sm={12} md={6} lg={6} xl={6}>
+                            {/**
+                            <Card className="TodayInfo-Card">
+                            <CardContent>
+                             */}       
                             <TodayInfo
                                 itemClicked={this.state.itemClicked}
                                 day={this.state.dayWeatherInfo}
+                                location={this.state.location}
+                                country={this.state.country}
                             />
+                            {/**
+                            </CardContent>
+                            </Card>
+                            */}
                         </Grid>
                         <Grid item style={colStyle} xs={12} sm={12} md={6} lg={6} xl={6}>
                             <DaysList
@@ -127,10 +186,12 @@ class App extends React.Component {
                             />
                         </Grid>
                     </Grid>
+                    </Container>
+                    
                 </Grid>
                 </Paper>
                     </Container>
-                
+                    </MuiThemeProvider>
                 </div>
                 
 

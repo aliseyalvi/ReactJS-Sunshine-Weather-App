@@ -42,6 +42,11 @@
 .App{
   flex-grow: 1;
 }
+.main-Container{
+  margin: 0;
+}
+.main-wrap{
+}
 .loading{
   text-align: center;
   font-size: 1.5em;
@@ -69,4 +74,9 @@
   flex-direction: row;
 }
 
-
+.TodayInfo-Card{
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: '0 8px 40px -12px rgba(0,0,0,0.3)';
+    transition: '0.3s';
+}

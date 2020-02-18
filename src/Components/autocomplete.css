@@ -5,15 +5,31 @@ body {
   input {
     border: 0;
     padding: 0.5rem;
-    min-width: 100px;
+    width: 300px;
+    border-radius: 5px 0 0 5px;
+  }
+  @media only screen and (max-width: 600px) and (min-width: 400px)  {
+    input {
+      width: 100px;
+    } 
+  }
+  @media only screen and (max-width: 800px) and (min-width: 600px)  {
+    input {
+      width: 200px;
+    } 
   }
   .search{
     border: 0;
     padding: 0.5rem;
-    width: 60px;
+    width: 4.5em;
+    border-radius: 0 5px 5px 0;
   }
   .search:hover{
     cursor: pointer;
+    box-shadow: 0 16px 70px -12.125px rgba(0,0,0,0.3);
+  }
+  .input:focus{
+    box-shadow: 0 16px 70px -12.125px rgba(0,0,0,0.3);
   }
   .no-suggestions {
     color: #999;
@@ -33,6 +49,17 @@ body {
     z-index: 99999;
     background: white;
     color: #424242;
+    width: 400px;
+  }
+  @media only screen and (max-width: 800px) and (min-width: 600px)  {
+    .suggestions {
+      width: 300px;
+    } 
+  }
+  @media only screen and (max-width: 600px) and (min-width: 300px)  {
+    .suggestions {
+      width: 200px;
+    } 
   }
   .suggestions:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

@@ -1,7 +1,36 @@
 import React, {Component} from 'react';
 import Day from './Day'
 import './dayslist.css'
-import {List,ListItem,ListItemText,ListItemIcon,Divider} from '@material-ui/core';
+import {List,ListItem,Card,CardContent,ListItemText,ListItemIcon,Divider} from '@material-ui/core';
+import {
+    withStyles,
+    MuiThemeProvider,
+    createMuiTheme
+} from "@material-ui/core/styles";
+const muiBaseTheme = createMuiTheme();
+
+const theme = {
+    overrides: {
+      MuiCard: {
+        root: {
+          "&.MuiEngagementCard--01": {
+            transition: "0.3s",
+            
+            margin: "10px",
+            boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+            "&:hover": {
+              boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
+            },
+            "& .MuiCardContent-root": {
+              textAlign: "left",
+              padding: muiBaseTheme.spacing.unit * 1,
+              margin: muiBaseTheme.spacing.unit * 0,
+            },
+          }
+        }
+      }
+    }
+  };
 function Menu(props) {
 
     const list = props.daysList;
@@ -21,6 +50,7 @@ function Menu(props) {
                 handleListItemClick(e,index);
                 props.getDay(index);
             }}
+            className="listli"
             >
                 <a href="#">
                     <div>{props.getDayFromDate(listItems.date)}
@@ -72,12 +102,19 @@ class DaysList extends Component {
 
         return (
             <div className="dayslist-container">
-
+                <MuiThemeProvider theme={createMuiTheme(theme)}>
+                <Card className={"MuiEngagementCard--01"}>
+                <CardContent className={"MuiCardContent-root"}>
                 <Menu
                     menuitems={this.props.daysinfo}
                     getDay={this.props.daysInfoHandler}
                     daysList={this.props.weekWeatherInfo}
                     getDayFromDate={this.getDayFromDate}/>
+
+
+            </CardContent>
+            </Card>
+            </MuiThemeProvider>
             </div>
         );
     }

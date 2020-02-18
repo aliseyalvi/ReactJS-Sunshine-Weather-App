@@ -16,7 +16,13 @@
 .temprature-container{
     box-sizing: border-box; 
     flex-grow: 1.5;
-    padding: 0 5px 0 10px;
+    padding: 10px;
+}
+.temprature-container span:nth-of-type(1){
+    font-size: 1em;
+}
+.temprature-container span:nth-of-type(2){
+    font-size: 0.8em;
 }
 .temprature-container p span:nth-of-type(1){
     font-size: 2.5em;
@@ -46,4 +52,8 @@
     align-items: flex-start;
     justify-content: space-between;
     padding: 0 5px 0 10px;
+}
+
+.weatherDetails-container span{
+    font-size: 1em;
 }
