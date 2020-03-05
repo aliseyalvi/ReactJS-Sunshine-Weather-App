@@ -35,7 +35,7 @@ class Header extends Component {
         
         return (
             <MuiThemeProvider theme={createMuiTheme(theme)}>
-            <AppBar position="static" className="root" color="primary">
+            <AppBar position="static" className="root" color="primary" >
                 <Toolbar >
                 <IconButton edge="start" className="logo-container">
                     <img src={Logo} alt="logo" className="logo-img"/>
@@ -47,7 +47,7 @@ class Header extends Component {
                  <h6 className="logo-name">
                  Sunshine
                  </h6>
-                <div className="spacer">
+                <div className="spacer1">
 
                 </div>
                  
@@ -56,6 +56,9 @@ class Header extends Component {
                 getLatLong={this.getLatLng}
                 />
                     
+                </div>
+                <div className="spacer2">
+
                 </div>
                 </Toolbar>
             </AppBar>

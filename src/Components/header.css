@@ -2,8 +2,11 @@
     flex-grow: 1;
 }
 
-.spacer{
-    flex-grow: 0.2;
+.spacer1{
+    flex-grow: 0.7;
+}
+.spacer2{
+    flex-grow: 1;
 }
 .logo-name{
     font-size: 2em;
@@ -37,7 +40,7 @@
 
     }
   }
-  @media only screen and (max-width: 300px)  {
+  @media only screen and (max-width: 400px)  {
     .logo-name{
         font-size: 0em;
 
@@ -46,6 +49,7 @@
 .setting-container{
     box-sizing: border-box; 
     padding: 5px;
+    flex-grow: 0.5;
 }
 
 .logo-img{

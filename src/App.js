@@ -69,6 +69,9 @@ class App extends React.Component {
         fetch(`http://api.weatherunlocked.com/api/trigger/${lat},${lng}/forecast%20next6d%20temperature%20gt%200%20include7dayforecast?app_id=b5f3c514&app_id=${APP_id}&app_key=${API_key}`)
             .then(response => response.json())
             .then((data) => {
+                console.log("fetchWeatherData");
+                console.log(data);
+                
                 this.setState({
                     weekWeatherInfo: [...data.ForecastWeather.Days],
                     dayWeatherInfo: data.ForecastWeather.Days[this.state.itemClicked],
@@ -152,8 +155,8 @@ class App extends React.Component {
                     <MuiThemeProvider theme={createMuiTheme(theme)}>
                     <Container maxWidth="false" className={"MuiContainer--01 main-Container"}>
                     <Paper elevation={0} className={"MuiPaper--01"}>
-                    <Grid container  className="main-wrap">
-                    <Grid container item direction="row">
+                    <Grid container item  className="main-wrap">
+                    <Grid  item direction="row" style={{ width:'100%'}}>
                         <Grid item style={colStyle} xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Header
                                 handleLatLng={this.handleLatLng}

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {debounce} from "lodash";
 import { throttle } from "lodash";
 //import debounce from 'lodash.debounce';
+import SearchIcon from '@material-ui/icons/Search';
 class Autocomplete extends Component {
   
 
@@ -60,7 +61,10 @@ class Autocomplete extends Component {
         
       
     })
-  },500)
+  },500,{
+    'leading': true,
+    'trailing': true
+  })
   
   handleSearch = e =>{
 
@@ -155,6 +159,7 @@ class Autocomplete extends Component {
     this.fetchAPI("a");
   }
   render() {
+    let SearchIcon = require('../imgs/sharp_search_white_24dp.png');
     const {
       onChange,
       onClick,
@@ -200,14 +205,36 @@ class Autocomplete extends Component {
     }
 
     return (
+      
       <Fragment>
+        {/**
         <input
           type="text"
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
         />
-        <button onClick={this.handleSearch} className="search">Search</button>
+        
+        <button onClick={this.handleSearch} className="search">
+          <img src={SearchIcon} />
+        </button>
+         */}
+        <div class="wrap">
+          <div class="search">
+              <input type="text" class="searchTerm" placeholder="Search Location"
+              onChange={onChange}
+              onKeyDown={onKeyDown}
+              value={userInput}
+              />
+              <button type="submit" class="searchButton"
+              onClick={this.handleSearch}
+              
+              >
+             {/**  <img src={SearchIcon} className="searchIcon" />
+              * */}
+            </button>
+          </div>
+        </div>
         {suggestionsListComponent}
       </Fragment>
     );
